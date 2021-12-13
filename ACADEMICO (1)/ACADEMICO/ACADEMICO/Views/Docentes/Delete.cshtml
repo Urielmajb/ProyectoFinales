@@ -1,0 +1,112 @@
+﻿@model ACADEMICO.Models.Docente
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Thems/styles.css">
+    <title>Advanced Search Form</title>
+</head>
+
+<body>
+
+    <div class="page-header">
+        <h1 class="text-center">Docente</h1>
+    </div>
+
+    <div class="container" id="advanced-search-form">
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreDocente, "Nombre: ", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.NombreDocente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NombreDocente, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaNacimiento, "Nacimiento: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.FechaNacimiento, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+
+            @*@Html.EditorFor(model => model.fecharealizada, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control"} })*@
+            @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Edad, "Edad: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+
+        </div>
+
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="DocenteID" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-primary">Regresar</a>
+            </form>
+
+
+
+
+        </div>
+
+</body>
+</html>
+
+
+@*<div>
+    <h4>Docente</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreDocente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreDocente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DocenteID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Regresar</a>
+    </form>
+</div>*@
+
+

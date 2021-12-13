@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DAL.tblPersonas>
+
+@{
+    ViewBag.Title = "tblPersonasListar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1 class="text-center"><b>Listado de Personal de MINREX</b></h1>
+</div>
+
+<h2 class="page-header">
+    <a href="~/tblPersonas/tblPersonaAdd" class="btn btn-warning pull-right"> Agregar Ficha Personal </a>
+    <a href="@Url.Action("Print", "tblPersonas")" class="btn btn-warning pull-right"> Exportar PDF </a>
+</h2>
+
+<hr />
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<table id="grid" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                Nombre
+                @*@Html.DisplayNameFor(model => model.Nombre)*@
+            </th>
+            <th scope="col">
+                Apellido
+                @*@Html.DisplayNameFor(model => model.Apellido)*@
+            </th>
+            <th scope="col">
+                Cargo
+                @*@Html.DisplayNameFor(model => model.Cargo)*@
+            </th>
+            <th scope="col">
+                Area
+                @*@Html.DisplayNameFor(model => model.Area)*@
+            </th>
+            <th scope="col">
+                Estado
+                @*@Html.DisplayNameFor(model => model.ACTIVO)*@
+            </th>
+            <th scope="col">
+                Fecha de Prestamo
+                @*@Html.DisplayNameFor(model => model.Fechaprestamo)*@
+            </th>
+            <th scope="col">
+                Fecha de Entrega
+                @*@Html.DisplayNameFor(model => model.FechaEntrega)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ACTIVO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fechaprestamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntrega)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-info" href="~/tblPersonas/tblPersonaVer/@item.IDPersona"> Visualizar </a>
+                <a class="btn btn-success" href="~/tblPersonas/tblPersonaAdd/@item.IDPersona"> Editar </a>
+
+
+
+            </td>
+        </tr>
+}
+
+    </tbody>
+
+
+
+</table>
+
+
+

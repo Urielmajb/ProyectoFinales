@@ -1,0 +1,5 @@
+Credenciales
+
+urielmajb3@gmail.com - Administrador (Tiene Ful Acceso)
+urielmajb2@gmail.com - SubAdmin (No tiene acceso a Administrador de Uusarios)
+urisajb@gmail.com - No tiene rol asignado.

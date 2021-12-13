@@ -1,0 +1,160 @@
+﻿@model DAL.tblPersonas
+
+@{ ViewBag.Title = "tblPersonaVer";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Thems/styles.css">
+    <title>Advanced Search Form</title>
+</head>
+
+<body>
+
+    <div class="page-header">
+        <h1 class="text-center">Ficha Personal</h1>
+    </div>
+
+    <ol class="breadcrumb">
+        <li class="active"> @(Model.IDPersona > 0 ? Model.Nombre + Model.Apellido : "Nuevo Personal") </li>
+    </ol>
+
+
+    <div class="container" id="advanced-search-form">
+
+        @using (Html.BeginForm())
+        {
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, "Nombre: ", htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Apellido, "Apellido:", htmlAttributes: new { @class = "control-label " })
+                        @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Area, "Area: ", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Area, "Area", htmlAttributes: new { @class = "control-label" })
+
+                                                        @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+
+                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.Fechaprestamo, "Prestamo: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                                        @Html.TextBoxFor(model => model.Fechaprestamo, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                                                                        @Html.ValidationMessageFor(model => model.Fechaprestamo, "", new { @class = "text-danger" })
+                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        @Html.LabelFor(model => model.FechaEntrega, "Entrega: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                                                        @Html.TextBoxFor(model => model.FechaEntrega, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                                                                                        @Html.ValidationMessageFor(model => model.FechaEntrega, "", new { @class = "text-danger" })
+                                                                                    </div>
+
+
+                                                                                    <div class="text-left">
+                                                                                        <button data-ajax="true" data-confirm="Esta seguro de Guardar el Equipo?"
+                                                                                                type="submit" class="btn btn-primary">
+                                                                                            <span class="glyphicon glyphicon-save"> </span> Guardar
+                                                                                        </button>
+                                                                                        <a class="btn btn-info" href="~/tblPersonas/tblPersonasListar">Regresar</a>
+                                                                                        <a href="#" data-toggle="modal" data-target="#ModalEliminar" class="btn btn-danger">Eliminar</a>
+                                                                                    </div>
+                                                                                                    
+                                                                                                    @*<div class="text-left">
+                                                                                                                        <button data-ajax="true" data-confirm="Esta seguro de Guardar el Personal?"
+                                                                                                                                type="submit" class="btn btn-primary">
+                                                                                                                            <span class="glyphicon glyphicon-save"> </span> Guardar
+                                                                                                                        </button>
+                                                                                                                       
+
+                                                                                                                        <a class="btn btn-info" href="~/tblPersonas/tblPersonasListar">Regresar</a>
+                                                                                                                    </div>*@
+        }
+
+        <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Confirmar Borrado?</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @*<h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>*@
+                    </div>
+                    <div class="modal-body">
+                        <p>Desea borrar '@Model.Nombre'?</p>
+                        <p>
+                            <strong>Esta Seguro de Continuar?</strong>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        @if (Model.IDPersona > 0)
+                        {
+            <a href="/tblPersonas/tblPersonasliminar/@Model.IDPersona"
+               class="btn btn-danger">Si, Borrar el responsable</a>}
+                        <button type="button" class="btn btn-success" data-dismiss="modal">
+                            No, Borrar el responsable
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Confirmar Borrado?</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                    @*<h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>*@
+                <!--</div>
+                <div class="modal-body">
+                    <p>Desea borrar '@Model.Nombre'?</p>
+                    <p>
+                        <strong>Esta Seguro de Continuar?</strong>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    @if (Model.IDPersona > 0)
+                    {
+        <a href="/tblPersonas/tblPersonasliminar/@Model.IDPersona"
+           class="btn btn-danger">Si, Borrar el responsable</a>}
+                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                        No, Borrar el responsable
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    </body>
+</html>

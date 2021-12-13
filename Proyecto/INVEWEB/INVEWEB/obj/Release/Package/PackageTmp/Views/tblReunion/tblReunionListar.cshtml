@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DAL.tblReunion>
+
+@{
+    ViewBag.Title = "tblReunionListar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1 class="text-center"><b>Listado de Eventos Realizados</b></h1>
+
+</div>
+
+@*<h2 class="page-header">
+</h2>*@
+
+<h2 class="page-header">
+    <a href="~/tblReunion/tblReunionAdd" class="btn btn-warning pull-right"> Agregar Reunion a realizar </a>
+
+    <a href="@Url.Action("Print", "tblReunion")" class="btn btn-warning pull-right"> Exportar PDF </a>
+</h2>
+
+<hr />
+
+
+<table id="grid" class="table table-bordered table-hover">
+    <thead >
+        <tr>
+            <th scope="col">
+                Reunion/Evento
+                @*@Html.DisplayNameFor(model => model.NOM_REUNION)*@
+            </th>
+            <th scope="col">
+                Fecha Realizada
+                @*@Html.DisplayNameFor(model => model.fecharealizada)*@
+            </th>
+            <th scope="col">
+                Hora
+                @*@Html.DisplayNameFor(model => model.hora)*@
+            </th>
+            <th scope="col">
+                Concepto Reunion
+                @*@Html.DisplayNameFor(model => model.TipoReunion)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOM_REUNION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecharealizada )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoReunion)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-info" href="~/tblReunion/tblReunionVer/@item.IDReunion"> Visualizar </a>
+                <a class="btn btn-success" href="~/tblReunion/tblReunionAdd/@item.IDReunion"> Editar </a>
+            </td>
+
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDReunion }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDReunion }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDReunion })
+        </td>*@
+        </tr>
+}
+
+    </tbody>
+
+
+
+</table>
+
+
+

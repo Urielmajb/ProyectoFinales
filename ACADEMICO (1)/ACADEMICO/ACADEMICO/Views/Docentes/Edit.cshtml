@@ -1,0 +1,98 @@
+﻿@model ACADEMICO.Models.Docente
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h1 class="text-center">Ficha Docente</h1>
+</div>
+
+<div class="panel-heading"> Docente:  @(Model.DocenteID > 0 ? Model.NombreDocente : "Nuevo Equipo") </div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DocenteID" />
+            <div class="form-group">
+                <label asp-for="NombreDocente" class="control-label">Nombre Docente: </label>
+                <input asp-for="NombreDocente" class="form-control" />
+                <span asp-validation-for="NombreDocente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input type="date" asp-format="{0:dd/MM/yyyy}" asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edad" class="control-label"></label>
+                <input asp-for="Edad" class="form-control" />
+                <span asp-validation-for="Edad" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
+                </label>
+            </div>
+
+
+
+            <div class="text-left">
+                
+                <a class="btn btn-danger" asp-action="delete"
+                   asp-route-id="@Model.DocenteID"
+                   onclick="return confirm('Estas segurro de borrar a este docente..?');">Eliminar</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-primary" href="~/Docentes/Index">Regresar</a>
+            </div>
+            @*<div class="form-group">
+            </div>*@
+        </form>
+    </div>
+</div>
+
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+<!--<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Confirmar Borrado?</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                @*<h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>*@
+            <!--</div>
+            <div class="modal-body">
+                <p>Desea borrar '@Model.NombreDocente'?</p>
+                <p>
+                    <strong>Esta Seguro de Continuar?</strong>
+                </p>
+            </div>
+
+
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="DocenteID" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <a asp-action="Index">Back to List</a>
+            </form>-->
+
+            @*<a href="~/Docentes/Delete/@Model.DocenteID" class="btn btn-danger">Si, Borrar el Equipo</a>}
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    No, Borrar el Equipo
+                </button>*@
+
+        <!--</div>
+    </div>
+</div>-->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

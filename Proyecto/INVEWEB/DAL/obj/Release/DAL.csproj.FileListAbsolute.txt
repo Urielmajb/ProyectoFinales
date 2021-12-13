@@ -1,0 +1,14 @@
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\DAL.dll.config
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\DAL.dll
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\DAL.pdb
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\EntityFramework.dll
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\EntityFramework.xml
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\es\EntityFramework.resources.dll
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\bin\Release\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\obj\Release\DAL.csproj.AssemblyReference.cache
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\obj\Release\DAL.csproj.CopyComplete
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\obj\Release\DAL.dll
+C:\Users\Posgrado\Desktop\Proyecto\INVEWEB\DAL\obj\Release\DAL.pdb

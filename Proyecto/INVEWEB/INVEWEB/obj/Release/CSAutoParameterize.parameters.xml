@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DBEquipo-Web.config Connection String" description="DBEquipo Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=SQL5080.site4now.net;Initial Catalog=db_a7d0ab_dbequipo;User Id=db_a7d0ab_dbequipo_admin;Password=salome16" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Posgrado\\Desktop\\Proyecto\\INVEWEB\\INVEWEB\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBEquipo']/@connectionString" />
+  </parameter>
+</parameters>

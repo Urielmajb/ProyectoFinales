@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWp6fQ6rgfEWkuJ/5DUxUggAAAAACAAAAAAAQZgAAAAEAACAAAAAa4ARsWlYgUsiWnH07Wf+tStdMEI5L9Rb+xyc5/AxFHwAAAAAOgAAAAAIAACAAAAD+YO15JlJ9GdMa474nRgUVwIilyN3vjtgobQhjvOu78iAAAAB0gMXU+X8Vmb3tADbMdv5k7cilKHUZZwr8nzg+Zwf9YkAAAAB7zLE6dWjd9MniQoQzE5sJesUgEW4pwIiaACiSDhWYzgMyhKCvYK9a9u2T1F2APsCpY/G//3YYsMbSskoslu64</EncryptedPassword>
+    <History>True|2021-12-13T03:36:47.8697725Z;True|2021-12-02T20:58:33.4527848-06:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ACADEMICOContext">
+      <Value>Data Source=SQL5108.site4now.net%3bInitial Catalog=db_a7d4f9_bdacademico%3bUser Id=db_a7d4f9_bdacademico_admin%3bPassword=salome16%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

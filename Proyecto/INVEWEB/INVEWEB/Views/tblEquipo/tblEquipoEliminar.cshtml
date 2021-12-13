@@ -1,0 +1,65 @@
+﻿@model DAL.tblEquipo
+
+@{
+    ViewBag.Title = "tblEquipoEliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Confirmar Borrado?</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @*<h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>*@
+            </div>
+            <div class="modal-body">
+                <p>Desea borrar '@Model.NOM_EQUIPO'?</p>
+                <p>
+                    <strong>Esta Seguro de Continuar?</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                @if (Model.ID_Equipo > 0)
+                {
+    <a href="/tblEquipo/tblEquipoEliminar/@Model.ID_Equipo" class="btn btn-danger">Si, Borrar el Equipo</a>}
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    No, Borrar el Equipo
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>
+            </div>
+            <div class="modal-body">
+                <p>Desea borrar '@Model.NOM_EQUIPO'?</p>
+                <p>
+                    <strong>Esta Seguro de Continuar?</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                @if (Model.ID_Equipo > 0)
+                {
+    <a href="/tblEquipo/tblEquipoEliminar/@Model.ID_Equipo"
+       class="btn btn-danger">Si, Borrar el Curso</a>}
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    No, Borrar el Equipo
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>*@
+

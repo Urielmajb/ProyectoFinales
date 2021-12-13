@@ -1,0 +1,107 @@
+﻿@model Paginacion<ACADEMICO.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Listado de Categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+
+<h2 class="page-header">
+    <a href="~/Categorias/Create" class="btn btn-warning pull-right"> Agregar Categorias </a>
+</h2>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions nocolor">
+        <p>
+            Buscar Por:<input type="text" name="searchstring" value="@ViewData["Filtro"]" />
+            <input type="submit" value="Buscar" class="btn btn-danger" />
+            <a asp-action="Index">Todos Los Registros</a>| Registros Mostrados @Model.TotalRows
+        </p>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Ordenar1"]" asp-route-currentFilter="@ViewData["Filtro"]">Nombre</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Ordenar2"]" asp-route-currentFilter="@ViewData["Filtro"]">Descripcion</a>
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a class="btn btn-info" href="~/Categorias/Details/@item.CategoriaID"> Visualizar </a>
+                <a class="btn btn-success" href="~/Categorias/Edit/@item.CategoriaID"> Editar </a>
+
+                @*<a asp-action="Edit" asp-route-id="@item.CategoriaID">Edit</a>
+
+                <a asp-action="Details" asp-route-id="@item.CategoriaID">Details</a> |*@
+                @*<a asp-action="Delete" asp-route-id="@item.CategoriaID">Delete</a>*@
+
+            </td>
+            @*<td class="text-right">
+                <a class="btn btn-info" href="~/Categorias/Details/@item.CategoriaID"> Visualizar </a>
+            </td>*@
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["Ordenar"]"
+       asp-route-page="@(Model.PageIndex - 1)"
+       asp-route-currentfilter="@ViewData["Filtro"]"
+       class="btn btn-info @prevDisabled">
+        Anterior
+    </a>
+
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["Ordenar"]"
+           asp-route-page="@i"
+           asp-route-currentfilter="@ViewData["Filtro"]"
+           class="btn btn-success ">
+            @i
+        </a>
+
+    }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["Ordenar"]"
+       asp-route-page="@(Model.PageIndex + 1)"
+       asp-route-currentfilter="@ViewData["Filtro"]"
+       class="btn btn-info @nextDisabled">
+        Siguiente
+    </a>
+

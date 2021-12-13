@@ -1,0 +1,121 @@
+﻿@model DAL.tblReunion
+
+@{ ViewBag.Title = "tblReunionVer";
+    List<DAL.tblEquipo> Equipo = ViewBag.Equipo;
+    List<DAL.tblPersonas> Persona = ViewBag.Persona;
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Thems/styles.css">
+    <title>Advanced Search Form</title>
+</head>
+
+<body>
+
+    <div class="page-header">
+        <h1 class="text-center">Reuniones Realizadas</h1>
+    </div>
+
+    <ol class="breadcrumb">
+        <li class="active"> @(Model.IDReunion > 0 ? Model.NOM_REUNION : "Nuevo Evento") </li>
+    </ol>
+
+
+    <div class="container" id="advanced-search-form">
+
+        @using (Html.BeginForm())
+        {
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Persona_Id, "Responsable: ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <select name="Persona_Id" class="form-control">
+            @foreach (var c in Persona)
+            {
+    <option @(c.IDPersona == Model.Persona_Id ? "selected" : "")
+            value="@c.IDPersona">
+        @c.Nombre @c.Apellido
+    </option>}
+        </select>
+
+        @Html.ValidationMessageFor(model => model.Persona_Id, "", new { @class = "text-danger" })
+    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NOM_REUNION, "Reunion: ", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        @Html.EditorFor(model => model.NOM_REUNION, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NOM_REUNION, "", new { @class = "text-danger" })
+                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.fecharealizada, "Realizada: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.TextBoxFor(model => model.fecharealizada, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+
+                                        @*@Html.EditorFor(model => model.fecharealizada, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control"} })*@
+                                        @Html.ValidationMessageFor(model => model.fecharealizada, "", new { @class = "text-danger" })
+                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.hora, "Hora: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                        @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        @Html.LabelFor(model => model.TipoReunion, "Tipo: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                                        @Html.EditorFor(model => model.TipoReunion, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.TipoReunion, "", new { @class = "text-danger" })
+                                                                    </div>
+
+
+                                                                                    <div class="form-group">
+                                                                                        @Html.LabelFor(model => model.Equipo_Id, "Equipo: ", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                                                                        <select name="Equipo_Id" class="form-control">
+                                                                                            @foreach (var c in Equipo)
+                                                                                            {
+                                                                            <option @(c.ID_Equipo == Model.Equipo_Id ? "selected" : "")
+                                                                                    value="@c.ID_Equipo">
+                                                                                @c.NOM_EQUIPO
+                                                                            </option>}
+                                                                                        </select>
+
+                                                                                        @Html.ValidationMessageFor(model => model.Persona_Id, "", new { @class = "text-danger" })
+
+
+                                                                                    </div>
+
+                                                                                                    <div class="text-left">
+                                                                                                        <button data-ajax="true" data-confirm="Esta seguro de Guardar el Equipo?"
+                                                                                                                type="submit" class="btn btn-primary">
+                                                                                                            <span class="glyphicon glyphicon-save"> </span> Guardar
+                                                                                                        </button>
+                                                                                                        <a class="btn btn-info" href="~/tblReunion/tblReunionListar">Regresar</a>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    @*<div class="text-left">
+                                                                                                                        <button data-ajax="true" data-confirm="Esta seguro de Guardar la Reunion?"
+                                                                                                                                type="submit" class="btn btn-primary">
+                                                                                                                            <span class="glyphicon glyphicon-save"> </span> Guardar
+                                                                                                                        </button>
+                                                                                                                        <a href="#" data-toggle="modal" data-target="#" class="btn btn-danger">Eliminar</a>
+
+                                                                                                                        <a class="btn btn-primary" href="~/tblReunion/tblReunionListar">Regresar</a>
+                                                                                                                    </div>*@
+        
+        
+        }
+
+
+    </div>
+
+
+
+</body>
+</html>

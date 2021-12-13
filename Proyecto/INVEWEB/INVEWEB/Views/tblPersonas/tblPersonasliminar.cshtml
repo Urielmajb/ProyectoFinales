@@ -1,0 +1,142 @@
+﻿@model DAL.tblPersonas
+
+@{
+    ViewBag.Title = "tblPersonasliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Confirmar Borrado?</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @*<h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>*@
+            </div>
+            <div class="modal-body">
+                <p>Desea borrar '@Model.Nombre'?</p>
+                <p>
+                    <strong>Esta Seguro de Continuar?</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                @if (Model.IDPersona > 0)
+                {
+    <a href="/tblPersonas/tblPersonasliminar/@Model.IDPersona"
+       class="btn btn-danger">Si, Borrar el responsable</a>}
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    No, Borrar el responsable
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmación de Borrado</h4>
+            </div>
+            <div class="modal-body">
+                <p>Desea borrar '@Model.Nombre'?</p>
+                <p>
+                    <strong>Esta Seguro de Continuar?</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                @if (Model.IDPersona > 0)
+                {
+                    <a href="/tblPersonas/tblPersonasliminar/@Model.IDPersona"
+                       class="btn btn-danger">Si, Borrar la Persona</a>}
+                <button type="button" class="btn btn-success" data-dismiss="modal">
+                    No, Borrar la persona
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@*<h2>tblPersonasliminar</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblPersonas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fechaprestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fechaprestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEntrega)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }*@
+</div>

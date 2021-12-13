@@ -1,0 +1,108 @@
+﻿@model ACADEMICO.Models.Docente
+
+@{
+    //ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>Details</h1>*@
+
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
+                <div class="panel panel-default">
+                    <div class="panel-heading"> Docente:  @(Model.DocenteID > 0 ? Model.NombreDocente : "Nuevo Equipo") </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NombreDocente, "Nombre Docente ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+                                    @Html.EditorFor(model => model.NombreDocente, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NombreDocente, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FechaNacimiento, "Fecha Nacimiento: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.FechaNacimiento, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Edad, "Edad: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+                                    @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <dl>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Estado)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Estado)
+                                </dd>
+                            </dl>
+                            @*<div class="form-group">
+            @Html.LabelFor(model => model.Estado, "Estado: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                        </div>
+
+                        <div class="text-left">
+                            <a class="btn btn-info" href="~/Docentes/Index">Regresar</a>
+                        </div>
+
+                    </div>
+                </div>
+ }
+
+@*<div>
+    <h4>Docente</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreDocente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreDocente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+</div>*@
+@*<div>
+    <a asp-action="Edit" asp-route-id="@Model.DocenteID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>*@

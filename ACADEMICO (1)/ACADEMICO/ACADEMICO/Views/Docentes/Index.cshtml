@@ -1,0 +1,145 @@
+﻿@model Paginacion<ACADEMICO.Models.Docente>
+
+@{
+    ViewData["Title"] = "Listado de Docentes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center"><b> @ViewData["Title"] </b> </h1>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+
+<h2 class="page-header">
+    <a href="~/Docentes/Create" class="btn btn-warning pull-right"> Agregar Docente </a>
+</h2>
+
+
+<form asp-action="Index" method="get">
+    <div class="form-actions nocolor">
+        <p>
+            Buscar Por:<input type="text" name="searchstring" value="@ViewData["Filtro"]" />
+            <input type="submit" value="Buscar" class="btn btn-danger" />
+            <a asp-action="Index">Todos Los Registros</a>| Registros Mostrados @Model.TotalRows
+        </p>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Ordenar1"]" asp-route-currentFilter="@ViewData["Filtro"]">Nombre Docente</a>
+            </th>
+            <th>
+                Fecha Nacimiento
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Estado
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreDocente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+
+                <td class="text-right">
+                    <a class="btn btn-info" href="~/Docentes/Details/@item.DocenteID"> Visualizar </a>
+                    <a class="btn btn-success" href="~/Docentes/Edit/@item.DocenteID"> Editar </a>
+                    <a class="btn btn-danger" asp-action="delete"
+                        asp-route-id="@item.DocenteID"
+                        onclick="return confirm('Estas segurro de borrar a este docente..?');">Eliminar</a>
+
+                    @*<a class="btn btn-danger delete"
+                       data-id="@item.DocenteID"
+                       data-ng-controller="DocentesController"
+                       data-action="delete"
+                       data-body-message="Estas seguro de eliminar este docente?"> Eliminar </a>*@
+
+
+                    @*<a asp-action="Edit" asp-route-id="@item.CategoriaID">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.CategoriaID">Details</a> |*@
+                    @*<a asp-action="Delete" asp-route-id="@item.DocenteID">Eliminar</a>*@
+
+
+                </td>
+                @*<a asp-action="Edit" asp-route-id="@item.DocenteID">Edit</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.DocenteID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DocenteID">Delete</a>
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Advertencia..</h4>
+                </div>
+                <div class="modal-body delete-modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-delete">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirm-delete">Borrar</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@*<script src="~/Theme/js/demo/delete.js" asp-append-version="true"></script>*@
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["Ordenar"]"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentfilter="@ViewData["Filtro"]"
+   class="btn btn-info @prevDisabled">
+    Anterior
+</a>
+
+@for (int i = 1; i <= Model.TotalPages; i++)
+{
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["Ordenar"]"
+       asp-route-page="@i"
+       asp-route-currentfilter="@ViewData["Filtro"]"
+       class="btn btn-success ">
+        @i
+    </a>
+
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["Ordenar"]"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentfilter="@ViewData["Filtro"]"
+   class="btn btn-info @nextDisabled">
+    Siguiente
+</a>
+
